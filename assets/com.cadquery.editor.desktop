@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=CadQuery Editor
+Exec=user/src/run/run %u
+Icon=CadQuery
+Terminal=false
+Categories=Development;Graphics;
