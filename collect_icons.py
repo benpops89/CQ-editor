@@ -11,7 +11,7 @@ TEMPLATE = """<RCC>
 ITEM_TEMPLATE = "<file>{}</file>"
 
 QRC_OUT = "icons.qrc"
-RES_OUT = "src/icons_res.py"
+RES_OUT = "cq_editor/icons_res.py"
 TOOL = "pyrcc5"
 
 items = []
