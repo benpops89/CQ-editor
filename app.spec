@@ -54,7 +54,7 @@ exe = EXE(
     
     [],
     exclude_binaries=True,
-    name='run',
+    name='CQ-editor',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -65,7 +65,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon="./icons/CadQuery-Logo.ico"
 )
 coll = COLLECT(
     exe,
@@ -74,5 +73,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='cadquery',
+    name='CQ-editor',
 )
