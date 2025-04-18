@@ -61,7 +61,6 @@ PRINT_REDIRECTOR = _PrintRedirectorSingleton()
 
 
 class MainWindow(QMainWindow, MainMixin):
-
     name = "CQ-Editor"
     org = "CadQuery"
 
@@ -81,7 +80,6 @@ class MainWindow(QMainWindow, MainMixin):
     )
 
     def __init__(self, parent=None, filename=None):
-
         super(MainWindow, self).__init__(parent)
         MainMixin.__init__(self)
 
@@ -190,13 +188,11 @@ class MainWindow(QMainWindow, MainMixin):
         self.toolbar.setPalette(p)
 
     def closeEvent(self, event):
-
         self.saveWindow()
         self.savePreferences()
         self.saveComponentState()
 
         if self.components["editor"].document().isModified():
-
             rv = confirm(self, "Confirm close", "Close without saving?")
 
             if rv:
@@ -208,7 +204,6 @@ class MainWindow(QMainWindow, MainMixin):
             super(MainWindow, self).closeEvent(event)
 
     def prepare_panes(self):
-
         self.registerComponent(
             "editor",
             Editor(self),
@@ -260,7 +255,6 @@ class MainWindow(QMainWindow, MainMixin):
         )
 
     def prepare_menubar(self):
-
         menu = self.menuBar()
 
         menu_file = menu.addMenu("&File")
@@ -327,12 +321,10 @@ class MainWindow(QMainWindow, MainMixin):
         )
 
     def prepare_menubar_component(self, menus, comp_menu_dict):
-
         for name, action in comp_menu_dict.items():
             menus[name].addActions(action)
 
     def prepare_toolbar(self):
-
         self.toolbar = QToolBar("Main toolbar", self, objectName="Main toolbar")
 
         for c in self.components.values():
@@ -341,12 +333,10 @@ class MainWindow(QMainWindow, MainMixin):
         self.addToolBar(self.toolbar)
 
     def prepare_statusbar(self):
-
         self.status_label = QLabel("", parent=self)
         self.statusBar().insertPermanentWidget(0, self.status_label)
 
     def prepare_actions(self):
-
         self.components["debugger"].sigRendered.connect(
             self.components["object_tree"].addObjects
         )
@@ -431,7 +421,6 @@ class MainWindow(QMainWindow, MainMixin):
         )
 
     def prepare_console(self):
-
         console = self.components["console"]
         obj_tree = self.components["object_tree"]
 
@@ -450,13 +439,9 @@ class MainWindow(QMainWindow, MainMixin):
         )
 
     def fill_dummy(self):
-
-        self.components["editor"].set_text(
-            'import cadquery as cq\nresult = cq.Workplane("XY" ).box(3, 3, 0.5).edges("|Z").fillet(0.125)\nshow_object(result)'
-        )
+        self.components["editor"].set_text("from cadquery import *")
 
     def setup_logging(self):
-
         from logbook.compat import redirect_logging
         from logbook import INFO, Logger
 
@@ -467,7 +452,6 @@ class MainWindow(QMainWindow, MainMixin):
         self._logger = Logger(self.name)
 
         def handle_exception(exc_type, exc_value, exc_traceback):
-
             if issubclass(exc_type, KeyboardInterrupt):
                 sys.__excepthook__(exc_type, exc_value, exc_traceback)
                 return
@@ -480,12 +464,10 @@ class MainWindow(QMainWindow, MainMixin):
         sys.excepthook = handle_exception
 
     def edit_preferences(self):
-
         prefs = PreferencesWidget(self, self.components)
         prefs.exec_()
 
     def about(self):
-
         about_dialog(
             self,
             f"About CQ-editor",
@@ -493,19 +475,15 @@ class MainWindow(QMainWindow, MainMixin):
         )
 
     def check_for_cq_updates(self):
-
         check_gtihub_for_updates(self, cq)
 
     def documentation(self):
-
         open_url("https://github.com/CadQuery")
 
     def cq_documentation(self):
-
         open_url("https://cadquery.readthedocs.io/en/latest/")
 
     def handle_filename_change(self, fname):
-
         new_title = fname if fname else "*"
         self.setWindowTitle(f"{self.name}: {new_title}")
 
@@ -520,5 +498,4 @@ class MainWindow(QMainWindow, MainMixin):
 
 
 if __name__ == "__main__":
-
     pass
