@@ -10,7 +10,7 @@ from PyQt5.QtGui import QIcon
 
 from . import icons_res
 
-_icons = {"app": QIcon(":/images/icons/cadquery_logo_dark.svg")}
+_icons = {"app": QIcon(":/images/icons/cadquery_logo.svg")}
 
 import qtawesome as qta
 
@@ -75,7 +75,6 @@ _icons_specs = {
 
 
 def icon(name):
-
     if name in _icons:
         return _icons[name]
 

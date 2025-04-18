@@ -1,5 +1,11 @@
 import os, sys, asyncio
 import faulthandler
+import spyder.utils.icon_manager as icon_manager
+
+if getattr(sys, "frozen", False):
+    # You're running a PyInstaller binary
+    bundled_fonts_path = os.path.join(sys._MEIPASS, "spyder", "fonts")
+    icon_manager.ima._resource["directory"] = bundled_fonts_path
 
 faulthandler.enable()
 
