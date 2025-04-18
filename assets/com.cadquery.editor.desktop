@@ -1,7 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=CadQuery Editor
-Exec=user/src/run/run %u
+Exec=usr/src/CQ-editor/CQ-editor %u
 Icon=CadQuery
 Terminal=false
+StartupWMClass=CQ-editor
 Categories=Development;Graphics;
