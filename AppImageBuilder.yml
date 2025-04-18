@@ -1,0 +1,14 @@
+version: 1
+
+AppDir:
+  path: ./AppDir
+  app_info:
+    id: com.cadquery.editor
+    name: CadQuery_Editor
+    icon: CadQuery
+    version: latest
+    exec: usr/src/CQ-editor/CQ-editor
+    exec_args: $@
+AppImage:
+  arch: x86_64
+  update-information: guess
